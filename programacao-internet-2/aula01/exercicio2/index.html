@@ -15,21 +15,33 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
-        <form action="" method="">
+    <div class="container col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 p-5">
+        <form action="mensagemCadastro.php" method="POST">
             <div class="mb-3">
-                <label for="name" class="form-label">Nome completo</label>
-                <input type="text" name="name" class="form-control" placeholder="Nome completo">
+                <label for="nome" class="form-label">Nome completo</label>
+                <input 
+                    type="text" 
+                    name="nome" 
+                    class="form-control"
+                    id="nome"
+                    placeholder="Nome completo"
+                >
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="nome@exemplo.com">
+                <input 
+                    type="email" 
+                    name="email" 
+                    class="form-control"
+                    id="email"
+                    placeholder="nome@exemplo.com"
+                >
             </div>
 
             <div class="mb-3">
-                <label for="genre" class="form-label">Gênero</label>
-                <select class="form-select" name="genre" aria-label="Seleção do gênero">
+                <label for="genero" class="form-label">Gênero</label>
+                <select class="form-select" id="genero" name="genero" aria-label="Seleção do gênero">
                     <option selected>Selecione</option>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
@@ -39,8 +51,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="course" class="form-label">Curso</label>
-                <select class="form-select" name="course" aria-label="Seleção do curso">
+                <label for="curso" class="form-label">Curso</label>
+                <select class="form-select" id="curso" name="curso" aria-label="Seleção do curso">
                     <option selected>Selecione</option>
                     <option value="programador">Programador web</option>
                     <option value="banco">Banco de dados</option>
@@ -49,40 +61,97 @@
             </div>
 
             <div class="mb-3">
-                <label for="zipCode" class="form-label">Cep</label>
-                <input type="text" name="zipCode" class="form-control" placeholder="Cep">
+                <label for="cep" class="form-label">Cep</label>
+                <input 
+                    type="number"
+                    name="cep"
+                    class="form-control"
+                    id="cep"
+                    minlength="8"
+                    maxlength="8"
+                    placeholder="Cep"
+                    onchange="findCep(this)"
+                >
             </div>
             
             <div class="mb-3">
-                <label for="address" class="form-label">Endereço</label>
-                <input type="text" name="address" class="form-control" placeholder="Endereço" disabled>
+                <label for="endereco" class="form-label">Endereço</label>
+                <input 
+                    type="text"
+                    name="endereco"
+                    class="form-control"
+                    id="endereco"
+                    placeholder="Endereço"
+                    disabled
+                >
             </div>
 
             <div class="mb-3">
-                <label for="state" class="form-label">Estado</label>
-                <select class="form-select" name="state" aria-label="Seleção da cidade" disabled>
-                    <option selected>Selecione</option>
-                    <option value="sc">Santa Catarina (SC)</option>
-                    <option value="rs">Rio Grande do Sul (RS)</option>
-                    <option value="pr">Paraná (PR)</option>
-                </select>
+                <label for="estado" class="form-label">Estado</label>
+                <input 
+                    type="text"
+                    name="estado"
+                    class="form-control"
+                    id="estado"
+                    placeholder="Estado"
+                    disabled
+                >
             </div>
             
             <div class="mb-3">
-                <label for="city" class="form-label">Cidade</label>
-                <select class="form-select" name="city" aria-label="Seleção da cidade" disabled>
-                    <option selected>Selecione</option>
-                    <option value="sc">Brusque</option>
-                    <option value="rs">Gaspar</option>
-                    <option value="pr">Blumenau</option>
-                </select>
+                <label for="cidade" class="form-label">Cidade</label>
+                <input 
+                    type="text"
+                    name="cidade"
+                    class="form-control"
+                    id="cidade"
+                    placeholder="Cidade"
+                    disabled
+                >
             </div>
 
-            <button class="btn btn-warning col-2">Limpar</button>
-            <button type="submit" class="btn btn-primary col-2">Salvar</button>
+            <div class="d-flex justify-content-between">
+                <button 
+                    class="btn btn-warning col-5" 
+                    onclick="clearForm()"
+                >
+                    Limpar
+                </button>
+
+                <button 
+                    type="button" 
+                    class="btn btn-primary col-5"  
+                    data-bs-toggle="modal" 
+                    data-bs-target="#staticBackdrop"
+                >
+                    Salvar
+                </button>
+            </div>
+
+            <!-- Modal de confirmação -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirmação de cadastro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Confirmar cadastro?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" onclick="seila('cancelar')" class="btn btn-secondary">Cancelar</button>
+                    <button type="button" onclick="seila('confirmar')" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <input type="hidden" name="opcaoSelecionada" id="opcaoSelecionada">
         </form>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </body>
 </html>
