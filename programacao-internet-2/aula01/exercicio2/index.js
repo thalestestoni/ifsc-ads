@@ -43,7 +43,7 @@ function clearForm() {
     });
 }
 
-function seila(opcao) {
+function sendForm(opcao) {
     if (opcao == 'confirmar'){
         form.htmlElements.opcaoSelecionada.value = 'confirmar';
     } else {
