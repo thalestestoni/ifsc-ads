@@ -1,0 +1,42 @@
+main {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+#container {
+    max-width: 22rem;
+    margin: auto;
+}
+
+#operation-math-form {
+    margin-top: 1rem;
+}
+
+#values-container {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 0.5rem;
+}
+
+#values-container input {
+    padding: 1rem;
+    width: 48%;
+}
+
+#operation-math-form select {
+    padding: 0.7rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+
+    font-size: 1rem;
+}
+
+#operation-math-form button {
+    padding: 1rem;
+    width: 100%;
+} 
