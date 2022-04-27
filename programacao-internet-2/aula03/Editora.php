@@ -1,5 +1,5 @@
 <?php
-    public class Editora {
+    class Editora {
         private $nome;
         private $telefone;
         private $email;
