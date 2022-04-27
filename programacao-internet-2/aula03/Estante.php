@@ -1,17 +1,32 @@
 <?php
-    public class Estante {
+    include_once 'Livro.php';
+    class Estante {
         private $listaLivros;
 
-        public function adicionar($livro) {
-            // TODO
+        function __construct()
+        {
+            $this->listaLivros = array();
+            $this->listaLivros[] = new Livro("Aprendendo PHP e MySQL", "811829121", 543, 2008, "2 ed.");
+            $this->listaLivros[] = new Livro("Aprendendo PHP e MySQL", "811829121", 543, 2008, "2 ed.");
+            $this->listaLivros[] = new Livro("Aprendendo PHP e MySQL", "811829121", 543, 2008, "2 ed.");
+            $this->listaLivros[] = new Livro("Aprendendo PHP e MySQL", "811829121", 543, 2008, "2 ed.");
         }
 
-        public function obterQuantidade() {
-            // TODO
+        function adicionar($livro) {
+
+            // TODO: return void
         }
 
-        public function pegarLivro($posicao) {
-            // TODO
+        function obterQuantidade() {
+            // TODO: return int
+        }
+
+        function pegarLivro($posicao) {
+            // TODO: return livro
+        }
+
+        function obterListaLivros() {
+            return $this->listaLivros;
         }
     }
 ?>
