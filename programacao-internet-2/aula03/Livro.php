@@ -5,16 +5,18 @@
         private $nPaginas;
         private $anoPublicacao;
         private $numEdicao;
-        private $autor;
+        private $autores;
         private $editora;
 
-        function __construct($titulo, $isbn, $nPaginas, $anoPublicacao, $numEdicao)
+        function __construct($titulo, $isbn, $nPaginas, $anoPublicacao, $numEdicao, $autores, $editora)
         {
             $this->titulo = $titulo;
             $this->isbn = $isbn;
             $this->nPaginas = $nPaginas;
             $this->anoPublicacao = $anoPublicacao;
             $this->numEdicao = $numEdicao;
+            $this->autores = $autores;
+            $this->editora = $editora;
         }
 
         function getTitulo(){
@@ -37,12 +39,12 @@
             return $this->numEdicao;
         }
 
-        function getAutor() {
-            //TODO
+        function getAutores() {
+            return $this->autores;;
         }
 
         function getEditora() {
-            //TODO
+            return $this->editora;
         }
     }
 ?>
