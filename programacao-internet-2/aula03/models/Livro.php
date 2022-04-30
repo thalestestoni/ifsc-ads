@@ -1,5 +1,6 @@
 <?php
     class Livro {
+        private $codigo;
         private $titulo;
         private $isbn;
         private $nPaginas;
@@ -8,8 +9,8 @@
         private $autores;
         private $editora;
 
-        function __construct($titulo, $isbn, $nPaginas, $anoPublicacao, $numEdicao, $autores, $editora)
-        {
+        function __construct($codigo, $titulo, $isbn, $nPaginas, $anoPublicacao, $numEdicao, $autores, $editora) {
+            $this->codigo = $codigo;
             $this->titulo = $titulo;
             $this->isbn = $isbn;
             $this->nPaginas = $nPaginas;
@@ -19,7 +20,11 @@
             $this->editora = $editora;
         }
 
-        function getTitulo(){
+        function getCodigo() {
+            return $this->codigo;
+        }
+
+        function getTitulo() {
             return $this->titulo;
         }
 

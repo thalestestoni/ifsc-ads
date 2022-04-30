@@ -1,14 +1,11 @@
 <?php
-    include_once 'Estante.php';
-    include_once 'Autor.php';
-    include_once 'Editora.php';
+    include_once '../services/LivroServico.php';
 
-    $posicaoLivro = $_GET['posicaoLivro'];
+    $codigoLivro = $_GET['codigoLivro'];
     
-    session_start();
-    $estanteLivros = $_SESSION['estanteLivros'];
-
-    $livro = $estanteLivros->pegarLivro($posicaoLivro);
+    $livroServico = new LivroServico();
+    
+    $livro = $livroServico->obterDadosLivro($codigoLivro);
 ?>
 
 <!DOCTYPE html>
