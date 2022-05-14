@@ -1,10 +1,6 @@
 <form id="formTeste", method="post" action="salvarTeste.php">
   Nome:<br>
-  <input type="text" name="nome">
-  <br>
-  
-  Sobrenome:<br>
-  <input type="text" name="sobrenome" />
+  <input type="text" name="nome" />
   <br>
   
   Email:<br>

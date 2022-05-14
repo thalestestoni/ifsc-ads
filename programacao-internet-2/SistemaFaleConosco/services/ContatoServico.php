@@ -11,8 +11,6 @@ class ContatoServico {
     }
 
     function gravar($contato){
-        echo $contato;
-        return;
         $this->repositorio->gravar($contato);
     }
 

@@ -11,22 +11,28 @@ class ContatoRepositorio {
         $this->dbInstance = $dbConnection->getInstance();
     }
 
-    function gravar($contatoDto) {
+    function gravar($contato) {
         try {
             $stmt = $this->dbInstance->prepare('insert into contato (nome, email, telefone, mensagem) values (?,?,?,?)');
         
-            $stmt->execute([$contatoDto->nome, $contatoDto->email, $contatoDto->telefone, $contatoDto->mensagem]);
+            $stmt->execute([$contato->getNome(), $contato->getEmail(), $contato->getTelefone(), $contato->getMensagem()]);
 
-            return $stmt->fetch(); // fetch?
+            return $stmt->fetch();
         }
         catch (Exception $exception) {
-
+            echo("Falha ao tenta gravar a mensagem");
         }
     }
 
     function obterMensagens() {
-        $stmt = $this->dbInstance->prepare('select mensagem from contato');
-        
-        return $stmt->fetchAll();
+        $dados = $this->dbInstance->query('select mensagem from contato');
+
+        $mensagens = array();
+
+        foreach ($dados as $row) {
+            array_push($mensagens, $row['mensagem']);
+        }
+
+        return $mensagens;
     }
-}
+}   

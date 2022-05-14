@@ -11,11 +11,15 @@ function abrirUrl(url, divId, idOpcao){
         $("#"+idOpcao).attr('class', 'active');
         console.log($(idOpcao))
 		});
+
+  if (idOpcao === 'opcaoMensagens') {
+    listarMensagens();
+  }
 }
 
 
 function salvarForm(){
-	var formulario = $("#formTeste");
+	  var formulario = $("#formTeste");
     var url = formulario.attr('action');
 
     $.ajax({
@@ -24,6 +28,7 @@ function salvarForm(){
 		  dataType:'json',
       data: formulario.serialize(), // serializa os elementos do formulario.
       success: function(data) {
+        console.log(data);
 				alert(data.msg); // Mostra a resposta do PHP - apenas para teste.
 			   if(data.result == true){
 				   formulario.trigger('reset');
@@ -39,9 +44,17 @@ function salvarForm(){
 function listarMensagens() {
   $.ajax({
     type: 'GET',
-    url: '',
+    url: 'listaMensagens.php',
     success: function(data) {
-      console.log(data);
+      const mensagens = JSON.parse(data);
+
+      let listaMensagens = document.getElementById('lista-mensagens');
+
+      mensagens.forEach(mensagem => {
+        let li = document.createElement("li");
+        li.innerText = mensagem;
+        listaMensagens.appendChild(li);
+      });
     }
   })
 }

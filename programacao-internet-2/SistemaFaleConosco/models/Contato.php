@@ -2,15 +2,13 @@
 
 class Contato {
     private $nome;
-    private $sobrenome;
     private $email;
     private $telefone;
     private $mensagem;
 
-    function __construct($nome, $sobrenome, $email, $telefone, $mensagem)
+    function __construct($nome, $email, $telefone, $mensagem)
     {
         $this->nome = $nome;
-        $this->sobrenome = $sobrenome;
         $this->email = $email;
         $this->telefone = $telefone;
         $this->mensagem = $mensagem;
@@ -18,10 +16,6 @@ class Contato {
 
     function getNome() {
         return $this->nome;
-    }
-
-    function getSobrenome() {
-        return $this->sobrenome;
     }
 
     function getEmail() {
